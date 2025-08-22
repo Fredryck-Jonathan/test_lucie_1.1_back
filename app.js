@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const path = require('path')
 const cors = require('cors');
 require('dotenv').config();
 
@@ -28,11 +29,38 @@ const articlesRoutes = require('./routes/articles');
 const userRoutes = require('./routes/user');
 const bioPageRoutes = require('./routes/biographie_page');
 const expoRoutes = require('./routes/exposition');
+const imageRoutes = require('./routes/images');
+
+
+app.use('/uploads', (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.setHeader('Access-Control-Allow-Headers', '*');
+    next();
+}, express.static(path.join(__dirname, 'uploads')));
+
+
+app.get('/file/:filename'), (req, res) => {
+
+    const filename = req.paramas.filename;
+    try {
+        res.sendFile(__dirname + '/uploads/' + filename)
+    }
+    
+
+    catch (error) {
+        
+        res.send('Error:' + error)
+
+    }
+
+}
 
 app.use('/portfolio', portfolioRoutes);
 app.use('/articles', articlesRoutes);
 app.use('/auth', userRoutes);
 app.use('/biopage', bioPageRoutes);
 app.use('/exposition', expoRoutes);
+app.use('/images', imageRoutes);
+
 
 module.exports = app;
