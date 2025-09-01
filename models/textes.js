@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const MongooseErrors = require('mongoose-errors');
 mongoose.set('debug', true);
 
-const articlesSchema = mongoose.Schema({
+const textesSchema = mongoose.Schema({
 
     title: { type: String, required: true },
     date: { type: String, required: true },
@@ -13,6 +13,6 @@ const articlesSchema = mongoose.Schema({
 
 })
 
-articlesSchema.plugin(MongooseErrors);
+textesSchema.plugin(MongooseErrors);
 
-module.exports = mongoose.model('articles', articlesSchema, "articles");
+module.exports = mongoose.model('textes', textesSchema, "textes");

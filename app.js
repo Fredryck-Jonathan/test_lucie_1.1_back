@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 });
 
 const portfolioRoutes = require('./routes/portfolio');
-const articlesRoutes = require('./routes/articles');
+const textesRoutes = require('./routes/textes');
 const userRoutes = require('./routes/user');
 const bioPageRoutes = require('./routes/biographie_page');
 const expoRoutes = require('./routes/exposition');
@@ -56,7 +56,7 @@ app.get('/file/:filename'), (req, res) => {
 }
 
 app.use('/portfolio', portfolioRoutes);
-app.use('/articles', articlesRoutes);
+app.use('/texte', textesRoutes);
 app.use('/auth', userRoutes);
 app.use('/biopage', bioPageRoutes);
 app.use('/exposition', expoRoutes);
